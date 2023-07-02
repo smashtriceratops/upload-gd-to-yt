@@ -131,7 +131,7 @@ def resumable_upload(insert_request):
       if response is not None:
         if 'id' in response:
           print ("Video id '%s' was successfully uploaded." % response['id'])
-          ytResponseID = response['id']
+          ytResponseID = % response['id']
         else:
           exit("The upload failed with an unexpected response: %s" % response)
     except HttpError as e:
