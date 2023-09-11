@@ -133,7 +133,7 @@ def resumable_upload(insert_request):
         if 'id' in response:
           print ("Video id '%s' was successfully uploaded." % response['id'])
           file = open("/tmp/response.txt", "w")
-          file.write(str(response["id"])
+          file.write(str(response["id"]))
           file.close()
         else:
           exit("The upload failed with an unexpected response: %s" % response)
