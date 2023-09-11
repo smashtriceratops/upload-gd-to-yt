@@ -131,15 +131,8 @@ def resumable_upload(insert_request):
       status, response = insert_request.next_chunk()
       if response is not None:
         if 'id' in response:
-          try:
-             ytIDbrackets = response['id']
-          except:
-             None
-          try:
-             ytIDdot = response.id
-          except:
-             None
           print ("Video id '%s' was successfully uploaded." % response['id'])
+          print ("response: %s: " % response) 
         else:
           exit("The upload failed with an unexpected response: %s" % response)
     except HttpError as e:
