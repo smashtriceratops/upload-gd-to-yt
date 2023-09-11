@@ -121,7 +121,6 @@ def initialize_upload(youtube, options):
 # This method implements an exponential backoff strategy to resume a
 # failed upload.
 def resumable_upload(insert_request):
-  global response
   response = None
   error = None
   retry = 0
@@ -133,7 +132,7 @@ def resumable_upload(insert_request):
         if 'id' in response:
           print ("Video id '%s' was successfully uploaded." % response['id'])
           print ("response: %s: " % response)
-          return response
+          return ytResp = response
         else:
           exit("The upload failed with an unexpected response: %s" % response)
     except HttpError as e:
