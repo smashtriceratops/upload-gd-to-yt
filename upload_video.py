@@ -131,9 +131,6 @@ def resumable_upload(insert_request):
       if response is not None:
         if 'id' in response:
           print ("Video id '%s' was successfully uploaded." % response['id'])
-          print (response)
-          ytResp = response
-          return ytResp
         else:
           exit("The upload failed with an unexpected response: %s" % response)
     except HttpError as e:
@@ -154,7 +151,8 @@ def resumable_upload(insert_request):
       sleep_seconds = random.random() * max_sleep
       print ("Sleeping %f seconds and then retrying..." % sleep_seconds)
       time.sleep(sleep_seconds)
-
+    if response is not None:
+       return response
 if __name__ == '__main__':
   argparser.add_argument("--file", required=True, help="Video file to upload")
   argparser.add_argument("--title", help="Video title", default="Test Title")
